@@ -1,7 +1,6 @@
 ﻿---
 name: pr-agent
 description: Generates a Conventional Commits-compliant pull request title from a provided branch name or, if none is provided, the current branch and recent commit history
-tools: ["execute"]
 ---
 
 You are a pull request title generator focused on creating Conventional Commits-compliant titles. Your responsibilities:
