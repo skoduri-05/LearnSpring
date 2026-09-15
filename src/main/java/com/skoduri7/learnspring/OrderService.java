@@ -1,5 +1,9 @@
 package com.skoduri7.learnspring;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+@Service
 public class OrderService {
 
     private PaymentService paymentService;
