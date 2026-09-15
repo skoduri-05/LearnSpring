@@ -1,8 +1,8 @@
 # LearnSpring
 
-LearnSpring is a small Spring Boot learning project built one commit and pull request at a time. The project starts with a generated Spring Boot application, adds a basic web endpoint and static view, then moves into configuration, dependency inversion, constructor injection, setter injection, and Spring-managed beans.
+LearnSpring is a small Spring Boot learning project built one commit and pull request at a time. The project starts with a generated Spring Boot application, adds a basic web endpoint and static view, then moves into configuration, dependency injection, dependency inversion, constructor injection, setter injection, and Spring-managed beans.
 
-The current branch is `LearnDI`, so the latest code focuses on dependency injection through a simple order/payment example.
+The current `main` branch includes the dependency-injection learning work from `LearnDI`, so the latest code focuses on a simple order/payment example.
 
 ## What the App Does
 
@@ -149,9 +149,11 @@ The PR description explains that Spring Boot uses `src/main/resources/applicatio
 
 The description also includes a practical version-control lesson. A few lines of code were temporarily lost during branch and pull workflow, then recovered by using git history. The takeaway is that version control is not just for collaboration; it is also a safety net when local work disappears or branches get confusing.
 
-### LearnDI Branch
+### PR #6: LearnDI
 
-The active `LearnDI` branch continues after `main` and focuses on dependency injection.
+Branch: `LearnDI`
+
+This PR brought the dependency-injection lessons into `main`. The PR description frames dependency injection as a design pattern where a class receives the objects it needs instead of creating them itself. The goal is to reduce tight coupling between components.
 
 The DI work progressed through these commits:
 
@@ -165,6 +167,8 @@ The DI work progressed through these commits:
 
 Together, these commits move the code from directly using concrete service classes toward programming against the `PaymentService` interface. `OrderService` depends on the abstraction, while concrete implementations such as `PayPalPaymentService` and `StripePaymentService` handle the actual payment behavior.
 
+The branch starts by adding `StripePaymentService` and `OrderService`, showing how an app might rely on an external payment provider. It then introduces the `PaymentService` interface so the order logic can depend on a contract instead of a specific provider. After that, the code walks through constructor injection, swapping from Stripe to PayPal, setter injection, and Spring-managed beans.
+
 The branch also demonstrates Spring bean management:
 
 - `@Service` marks classes that Spring should create and manage.
@@ -172,6 +176,12 @@ The branch also demonstrates Spring bean management:
 - Constructor injection supplies required dependencies.
 - Setter injection appears as an additional injection style for comparison.
 - Multiple constructors show how Spring chooses the constructor marked with `@Autowired`.
+
+The PR description also includes a personal design note: dependency injection is useful when components may need to be swapped, tested independently, or decoupled, but it should still be applied thoughtfully instead of becoming the default answer for every class.
+
+### Read Me!
+
+The latest commit on `main` adds this README so the project history, PR descriptions, setup notes, and current Spring concepts are captured in one place.
 
 ## Current Learning Themes
 
@@ -186,7 +196,7 @@ The branch also demonstrates Spring bean management:
 
 ## Notes
 
-- `main` currently ends at PR #5, `LearnConfig`.
-- `LearnDI` contains the latest dependency-injection learning work.
+- `main` currently includes PR #6, `LearnDI`, followed by the `Read Me!` documentation commit.
+- `LearnDI` remains available as the topic branch for the dependency-injection work.
 - `backup/main-before-rewrite` preserves an earlier copy of the DI commit sequence before the current branch history was rewritten.
 - The project is intentionally small and instructional. The code favors clear examples of Spring concepts over production completeness.
